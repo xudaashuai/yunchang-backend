@@ -2,7 +2,7 @@ import Express from "express";
 import { MongoClient } from "mongodb";
 const app = Express();
 
-const uri = "mongodb+srv://adimn：admin@mongo:27017/";
+const uri = "mongodb+srv://adimn:admin@mongo:27017/";
 
 const dbClient = new MongoClient(uri);
 
