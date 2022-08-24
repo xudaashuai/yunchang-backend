@@ -1,11 +1,11 @@
 {
   "name": "yunchang-backend",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "./src/index.ts",
   "license": "MIT",
   "type": "module",
   "scripts": {
-    "start": "ts-node ./src/index.ts"
+    "start": "ts-node-esm ./src/index.ts"
   },
   "dependencies": {
     "express": "^4.18.1",
