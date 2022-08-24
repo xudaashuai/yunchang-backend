@@ -1,0 +1,9 @@
+{
+  "name": "yunchang-backend",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "koa2": "^2.0.0-alpha.7"
+  }
+}
