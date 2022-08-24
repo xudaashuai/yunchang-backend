@@ -9,14 +9,7 @@ services:
       MONGO_INITDB_ROOT_USERNAME: admin
       MONGO_INITDB_ROOT_PASSWORD: admin
 
-  mongo-express:
-    image: mongo-express
-    restart: always
+  backend:
+    build: ./
     ports:
-      - 8081:8081
-    environment:
-      ME_CONFIG_MONGODB_ADMINUSERNAME: admin
-      ME_CONFIG_MONGODB_ADMINPASSWORD: admin
-      ME_CONFIG_MONGODB_URL: mongodb://admin@mongo:27017/
-      ME_CONFIG_BASICAUTH_USERNAME: xds
-      ME_CONFIG_BASICAUTH_PASSWORD: 19980819
+      - 8080:8080
