@@ -37,7 +37,6 @@ app.post("/batchLoadMonthBills", async (req, res) => {
       },
     })
     .toArray();
-  console.log(tsStart, tsEnd, bills);
 
   const response: MonthBill[] = [];
   while (tsStart < tsEnd) {
