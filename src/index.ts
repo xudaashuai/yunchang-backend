@@ -32,8 +32,8 @@ app.post("/batchLoadMonthBills", async (req, res) => {
     .collection("bill")
     .find({
       time: {
-        $gte: tsStart,
-        $lt: tsEnd,
+        $gte: tsStart.valueOf(),
+        $lt: tsEnd.valueOf(),
       },
     })
     .toArray();
