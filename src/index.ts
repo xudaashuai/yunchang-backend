@@ -79,7 +79,7 @@ app.post("/createBill", async (req, res) => {
     amount: req.body.amount,
   });
 
-  res.status(result.insertedId ? 200 : 500);
+  res.status(result.insertedId ? 200 : 500).json({ result });
 });
 
 app.listen(8080);
