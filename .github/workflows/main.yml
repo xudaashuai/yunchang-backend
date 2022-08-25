@@ -31,4 +31,5 @@ jobs:
           HOST: 106.52.32.186
           PRIVATE_SSH_KEY: ${{ secrets.TOKEN }} 
           COMMAND: sh ./deploy.sh
+          USER: ubuntu
         
