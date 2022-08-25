@@ -7,7 +7,7 @@ const dbClient = await new MongoClient(uri).connect();
 
 app.get("/getAllCategories", async (req, res) => {
   res.json(
-    await dbClient.db("yunchang").collection("categories").find().toArray()
+    await dbClient.db("yunchang").collection("category").find().toArray()
   );
 });
 app.get("/batchLoadMonthBills", (req, res) => {
