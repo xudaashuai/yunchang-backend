@@ -1,6 +1,6 @@
 import { addMilliseconds, addMonths } from "date-fns";
 import Express from "express";
-import { MongoClient, WithId } from "mongodb";
+import { MongoClient } from "mongodb";
 import { BillItem, MonthBill } from "./types";
 const app = Express();
 
@@ -69,6 +69,17 @@ app.post("/batchLoadMonthBills", async (req, res) => {
     tsStart = addMonths(tsStart, 1);
   }
   res.json(response);
+});
+
+app.post("/createBill", async (req, res) => {
+  const result = await dbClient.collection("bill").insertOne({
+    type: req.body.type,
+    time: req.body.time,
+    category: req.body.category,
+    amount: req.body.amount,
+  });
+
+  res.status(result.insertedId ? 200 : 500);
 });
 
 app.listen(8080);
