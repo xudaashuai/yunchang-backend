@@ -1,7 +1,7 @@
 import { addMilliseconds, addMonths } from "date-fns";
 import Express from "express";
-import { MongoClient } from "mongodb";
-import { MonthBill } from "./types";
+import { MongoClient, WithId } from "mongodb";
+import { BillItem, MonthBill } from "./types";
 const app = Express();
 
 app.use(Express.json());
@@ -29,7 +29,7 @@ app.post("/batchLoadMonthBills", async (req, res) => {
   let tsStart = new Date(startYear, startMonth, 1);
   let tsEnd = addMilliseconds(addMonths(new Date(endYear, endMonth, 1), 1), -1);
   let bills = await dbClient
-    .collection("bill")
+    .collection<BillItem>("bill")
     .find({
       time: {
         $gte: tsStart.valueOf(),
@@ -46,13 +46,14 @@ app.post("/batchLoadMonthBills", async (req, res) => {
     const monthBills = bills
       .filter((bill) => {
         return (
-          bill.time.getMonth() === month && bill.time.getFullYear() === year
+          new Date(bill.time).getMonth() === month &&
+          new Date(bill.time).getFullYear() === year
         );
       })
       .map((bill) => {
         return {
           type: bill.type,
-          time: bill.time.getTime(),
+          time: new Date(bill.time).getTime(),
           categoryId: bill.categoryId,
           amount: bill.amount,
         };
