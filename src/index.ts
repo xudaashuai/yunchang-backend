@@ -53,7 +53,7 @@ app.post("/batchLoadMonthBills", async (req, res) => {
         return {
           type: bill.type,
           time: new Date(bill.time).getTime(),
-          categoryId: bill.categoryId,
+          category: bill.category,
           amount: bill.amount,
         };
       })
